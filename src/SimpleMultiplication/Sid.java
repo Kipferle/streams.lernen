@@ -4,9 +4,7 @@ import java.util.stream.Stream;
 
 public class Sid{
     public static int simpleMultiplication(int number) {
-        return Stream.of(number)
-                .mapToInt(x -> x % 2 == 0 ? x*8 : x*9)
-                .sum();
+        return Stream.of(number).mapToInt(x -> x % 2 == 0 ? x*8 : x*9).sum();
 
     }
 
