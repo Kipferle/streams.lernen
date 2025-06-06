@@ -6,70 +6,77 @@ import java.util.function.IntPredicate;
 
 public class test {
     public void sumTest(int[] input) {
-        System.out.println("Wir nehmen das Input Array: " + input + " und summieren alle Indizes zusammen: " +
+        System.out.println("Wir nehmen das Input Array: " + Arrays.toString(input) + " und summieren alle Indizes zusammen: " +
                 Arrays.stream(input)
                         .sum());
     }
 
     public void sortTest(int[] input) {
-        System.out.println("Wir nehmen das Input Array " + input + " und sortieren es Alphanummerisch: " +
+        System.out.println("Wir nehmen das Input Array " + Arrays.toString(input) + " und sortieren es Alphanummerisch: " +
                 Arrays.toString(Arrays.stream(input)
                         .sorted()
                         .toArray()));
     }
 
     public void filterTest(int[] input) {
-        System.out.println("Wir nehmen das Input Array " + input + " und übernehmen nur die Zahlen die größer als 6 sind: " +
+        System.out.println("Wir nehmen das Input Array " + Arrays.toString(input) + " und übernehmen nur die Zahlen die größer als 6 sind: " +
                 Arrays.toString(Arrays.stream(input)
                         .filter(x -> x > 6)
                         .toArray()));
     }
 
     public void filterTest(int[] input, IntPredicate lambda, String beschreibung) {
-        System.out.println("Wir nehmen das Input Array " + input + " und verwerfen alles für die \"" +
+        System.out.println();
+        System.out.println("Wir nehmen das Input Array " + Arrays.toString(input) + " und verwerfen alles für die \"" +
                 beschreibung + "\" nicht zutrifft: " +
                 Arrays.toString(Arrays.stream(input)
                         .filter(lambda)
                         .toArray()));
+        System.out.println("-".repeat(100));
     }
 
     public void reduceTest(int[] input, String rechenart) {
+        System.out.println();
         switch(rechenart) {
             case "+":
                 System.out.println(
-                        "Wir nehmen das Input Array " + input + " und addieren alle Zahlen aufeinander auf: " +
+                        "Wir nehmen das Input Array " + Arrays.toString(input) + " und addieren alle Zahlen aufeinander auf: " +
                                 Arrays.stream(input)
                                         .reduce((x, y) -> x + y)
                                         .getAsInt()
                 );
                 System.out.println("Hier besteht kein Unterschied zu .sum()!");
+                System.out.println("-".repeat(100));
                 break;
 
             case "-":
                 System.out.println(
-                        "Wir nehmen das Input Array " + input + " und subtrahieren alle Zahlen von links nach rechts: " +
+                        "Wir nehmen das Input Array " + Arrays.toString(input) + " und subtrahieren alle Zahlen von links nach rechts: " +
                                 Arrays.stream(input)
                                         .reduce((x, y) -> x - y)
                                         .getAsInt()
                 );
+                System.out.println("-".repeat(100));
                 break;
 
             case "*":
                 System.out.println(
-                        "Wir nehmen das Input Array " + input + " und multiplizieren alle Zahlen von links nach rechts: " +
+                        "Wir nehmen das Input Array " + Arrays.toString(input) + " und multiplizieren alle Zahlen von links nach rechts: " +
                                 Arrays.stream(input)
                                         .reduce((x, y) -> x * y)
                                         .getAsInt()
                 );
+                System.out.println("-".repeat(100));
                 break;
 
             case ":":
                 System.out.println(
-                        "Wir nehmen das Input Array " + input + " und dividieren alle Zahlen von links nach rechts: " +
+                        "Wir nehmen das Input Array " + Arrays.toString(input) + " und dividieren alle Zahlen von links nach rechts: " +
                                 Arrays.stream(input)
                                         .reduce((x, y) -> x / y)
                                         .getAsInt()
                 );
+                System.out.println("-".repeat(100));
                 break;
 
             default:
@@ -93,7 +100,7 @@ public class test {
         for (int x : input) {
             summe =+ x;
         }
-        System.out.println("Die Gesamtsumme von " + input + " ist " + summe + ".");
+        System.out.println("Die Gesamtsumme von " + Arrays.toString(input) + " ist " + summe + ".");
     }
 
     public void forSortTest(int[] input) {
@@ -109,7 +116,7 @@ public class test {
                 counter++;
             }
         }
-        System.out.println("In " + input + " gibt es " + counter + " Zahlen auf welche " + beschreibung + " zutrifft.");
+        System.out.println("In " + Arrays.toString(input) + " gibt es " + counter + " Zahlen auf welche \"" + beschreibung + "\" zutrifft.");
 
         // Neues Array erstellen
         int[] filtered = new int[counter];
@@ -125,11 +132,13 @@ public class test {
 
         // Neues Array ausgeben
         System.out.println(
-                "Nach anwenden des Filters " + beschreibung + " auf " + input + " bleibt noch " + filtered + " übrig."
+                "Nach anwenden des Filters \"" + beschreibung + "\" auf " + Arrays.toString(input) + " bleibt noch " + Arrays.toString(filtered) + " übrig."
         );
+        System.out.println("-".repeat(100));
     }
 
     public void forReduceTest(int[] input, String rechenart) {
+        System.out.println();
         switch (rechenart) {
             case "+":
                 int summe = 0;
@@ -137,8 +146,9 @@ public class test {
                     summe += x;
                 }
                 System.out.println(
-                        "Wenn man von Links nach Rechts alle Zahlen aus " + input + " aufeinander addiert, erhält man " + summe + "."
+                        "Wenn man von Links nach Rechts alle Zahlen aus " + Arrays.toString(input) + " aufeinander addiert, erhält man " + summe + "."
                 );
+                System.out.println("-".repeat(100));
                 break;
 
             case "-":
@@ -147,8 +157,9 @@ public class test {
                     diff -= x;
                 }
                 System.out.println(
-                        "Wenn man von Links nach Rechts alle Zahlen aus " + input + " voneinander abzieht, erhält man " + diff + "."
+                        "Wenn man von Links nach Rechts alle Zahlen aus " + Arrays.toString(input) + " voneinander abzieht, erhält man " + diff + "."
                 );
+                System.out.println("-".repeat(100));
                 break;
 
             case "*":
@@ -157,8 +168,9 @@ public class test {
                     prod *= x;
                 }
                 System.out.println(
-                        "Wenn man von links nach rechts alle Zahlen aus " + input + " miteinander multipliziert, erhält man " + prod + "."
+                        "Wenn man von links nach rechts alle Zahlen aus " + Arrays.toString(input) + " miteinander multipliziert, erhält man " + prod + "."
                 );
+                System.out.println("-".repeat(100));
                 break;
 
             case ":":
@@ -167,8 +179,9 @@ public class test {
                     quot /= x;
                 }
                 System.out.println(
-                        "Wenn man von links nach rechts alle Zahlen aus " + input + " durcheinander dividiert, erhält man " + quot + "."
+                        "Wenn man von links nach rechts alle Zahlen aus " + Arrays.toString(input) + " durcheinander dividiert, erhält man " + quot + "."
                 );
+                System.out.println("-".repeat(100));
                 break;
                 
             default:
@@ -199,18 +212,18 @@ public class test {
 
         // Lambda-Ausdrücke erklären (in IntelliJ sind Lambda-Ausdrücke "Predicates"
         // Der Lambda-Ausdruck wird für jedes Element des Arrays intTest ausgeführt und geprüft. Bei True wird übernommen bei False verworfen.
-        tester.filterTest(intTest, x -> x == 0, "x == 0");                     // Beispiel Lambda01
-        tester.filterTest(intTest, x -> x % 2 == 0, "x % 2 == 0");             // Beispiel Lambda02
-        tester.filterTest(intTest, x -> 3 < x && x < 8, "3 < x < 8");          // Beispiel Lambda03
-        tester.filterTest(intTest, x -> Math.pow(x, 2) <= 100, "x² <= 100");   // Beispiel Lambda04
+        tester.filterTest(intTest0, x -> x == 0, "x == 0");                       // Beispiel Lambda01
+        tester.filterTest(intTest0, x -> x % 2 == 0, "x % 2 == 0");               // Beispiel Lambda02
+        tester.filterTest(intTest, x -> 3 < x && x < 8, "3 < x < 8");             // Beispiel Lambda03
+        tester.filterTest(intTest, x -> Math.pow(x, 2) <= 100, "x² <= 100");      // Beispiel Lambda04
         // Geht natürlich auch komplizierter und vor allem auch mit anderen oder komplexen Datentypen z.B. Strings
 
         // forFilterTest vorführen                     ^
         //                                            / \
         // sind die gleichen Lambdas wie hier drüber   |
         //                                             |
-        tester.forFilterTest(intTest, x -> x == 0, "x == 0");                     // Beispiel Lambda01
-        tester.forFilterTest(intTest, x -> x % 2 == 0, "x % 2 == 0");             // Beispiel Lambda02
+        tester.forFilterTest(intTest0, x -> x == 0, "x == 0");                    // Beispiel Lambda01
+        tester.forFilterTest(intTest0, x -> x % 2 == 0, "x % 2 == 0");            // Beispiel Lambda02
         tester.forFilterTest(intTest, x -> 3 < x && x < 8, "3 < x < 8");          // Beispiel Lambda03
         tester.forFilterTest(intTest, x -> Math.pow(x, 2) <= 100, "x² <= 100");   // Beispiel Lambda04
         
