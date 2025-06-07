@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.function.IntPredicate;
 
-public class test {
+public class intTesting {
     public void sumTest(int[] input) {
         System.out.println("Wir nehmen das Input Array: " + Arrays.toString(input) + " und summieren alle Indizes zusammen: " +
                 Arrays.stream(input)
@@ -202,7 +202,7 @@ public class test {
 
     public static void main(String[] args) {
         // tester objekt erstellen welches die testMethoden beinhaltet
-        test tester = new test();
+        intTesting tester = new intTesting();
 
         // Test Arrays erstellen zum Herumspielen
         int[] intTest0 = {5, 4, 3, 2, 1, 0, 10, 9, 8, 7, 6};
